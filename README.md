@@ -83,10 +83,10 @@ code/
 └── stage0_text_upgrade_p0_to_p23.ipynb     # Stage 0: text analysis pipeline (P0→P2.3)
 
 data/
-├── Policy_Influenced_Stock_Price_With_FF_5_Factors.csv
-├── Financial_Ratios_Ticker.csv
 ├── All_Daily_Policy_Data.csv
-├── {AMTX,ALTO,APD,BCPC}_business_section.txt   # SEC 10-K Item 1 extracts
+├──   [not included in public repo] Policy_Influenced_Stock_Price_With_FF_5_Factors.csv
+├──   [not included in public repo] Financial_Ratios_Ticker.csv
+├──   [not included in public repo] {AMTX,ALTO,APD,BCPC}_business_section.txt   # SEC 10-K Item 1 extracts
 └── {subsidy,compliance,credit_market,demand_pull}_exposure_prototype.txt
 
 outputs/
