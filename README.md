@@ -118,6 +118,14 @@ The empirical analysis uses three datasets from WRDS:
 - **Financial Ratios by Ticker** — firm fundamentals
 - **All Daily Policy Data** — daily policy intensity index, 14,844 observations
 
+## Data Note
+
+This public repository is a presentation version prepared for research discussion.
+
+Some input datasets are not included because they are derived from licensed academic databases or reconstructed from public filing text through a separate preprocessing workflow.
+
+The repository retains the core code structure, documentation, and selected outputs necessary to illustrate the research design and implementation.
+
 ## Methods
 
 - **Factor models**: Firm-level FF5 OLS in pre-event window [−120, −20]
@@ -136,6 +144,7 @@ scikit-learn (for Stage 0 text pipeline)
 matplotlib
 linearmodels (for PanelOLS in Stage 2)
 ```
+
 
 ## Authors
 
