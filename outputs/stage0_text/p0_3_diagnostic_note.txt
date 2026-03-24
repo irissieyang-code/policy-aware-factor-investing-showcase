@@ -1,0 +1,13 @@
+P0.3 diagnostic: why text-based t-stats are identical within policy
+Finding: within each policy, TextBenefit/TextBurden/TextSpecificity/TextCertainty produce identical t-statistics and p-values.
+Interpretation: these regressors are almost certainly scalar rescalings of the same underlying base regressor, likely Exposure_pre × Post (or Exposure_pre × QuickFactor_t) multiplied by a single policy-level constant for each text dimension. Scalar rescaling changes beta and SE proportionally, so t-statistics are invariant by construction.
+Evidence from results table:
+- IRA: text specs share t-values [0.284]; text-only dimensions are not separately identified in current construction.
+- LCFS: text specs share t-values [-2.352, 2.352]; text-only dimensions are not separately identified in current construction.
+- RFS2: text specs share t-values [-0.794, 0.794]; text-only dimensions are not separately identified in current construction.
+Implication: the current Stage 2 text layer improves narrative framing and may change magnitude through rescaling, but it does not yet test distinct mechanisms.
+Required fix:
+1. Build mechanism-specific firm exposures, e.g., SubsidyExposure_j, ComplianceExposure_j, CreditMarketExposure_j.
+2. Interact those with matching policy-side text intensities, e.g., SubsidyExposure_j × SubsidyIntensity_t, ComplianceExposure_j × ComplianceIntensity_t.
+3. Alternatively, create time-varying text intensities at the document/day level rather than one policy-level constant per mechanism.
+4. Avoid using a single Exposure_pre for all text dimensions; that collapses channel differences.

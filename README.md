@@ -1,0 +1,146 @@
+# From Causal Evidence to Mechanism-Aware Signals
+
+**A Dual-Track Framework for Policy-Aware Factor Investing in the Sustainable Fuel Sector**
+
+This repository contains the research pipeline and ongoing text-analysis extension for a project studying how major U.S. climate policy shocks are priced in the cross-section of sustainable fuel equities.
+
+---
+
+## Project Structure
+
+The project has a completed empirical core (Stage 1 + Stage 2) and an in-progress text measurement extension (Stage 0).
+
+### Stage 1 — Weighted Event Study (Completed)
+
+Detects short-window abnormal returns around three policy events using firm-level Fama–French 5-factor models. A wide treatment definition assigns value-chain weights (core = 1.0, edge = 0.5) to capture indirect policy exposure. Test statistics include Patell Z, Corrado rank test, and cluster bootstrap p-values.
+
+### Stage 2 — Exposure-Based TWFE Panel (Completed)
+
+Converts event-identified signals into a structural policy-aware factor by interacting pre-policy firm exposure with daily policy intensity in a Bartik-style two-way fixed-effects panel. Reports AR and CAR regressions with clustered standard errors and lead–lag event-time dynamics.
+
+### Stage 0 — Text-Based Policy Mechanism Measurement (In Progress)
+
+Adds a text structuring layer to convert policy legislative language into structured mechanism variables. The goal is to move from narrative policy interpretation to auditable, testable mechanism measurement. This extension includes both a policy-side text pipeline and a firm-side annual-filing text pipeline.
+
+---
+
+## Results
+
+### Stage 1: Weighted Event Study
+
+| Definition | Policy | Event | Window | n_treat | Mean CAR | Patell Z | Corrado Z | Bootstrap p |
+|---|---|---|---|---|---|---|---|---|
+| Wide | IRA | 2022-08-16 | [0,1] | 56 | 0.82% | 2.338 | −0.314 | 0.927 |
+| Wide | LCFS | 2023-01-03 | [0,1] | 51 | −0.39% | 0.731 | −3.046 | 0.955 |
+| Wide | RFS2 | 2021-01-04 | [0,1] | 21 | 0.79% | 2.075 | 4.837 | 0.072 |
+
+RFS2 displays the cleanest signal across all windows. LCFS shows a negative response that strengthens as the window widens. IRA exhibits small, mixed short-window reactions consistent with the diffuse scope of the Act.
+
+### Stage 2: AR–TWFE Policy Betas
+
+| Policy | Event | β(ExpoQuick) | se | t | p | N |
+|---|---|---|---|---|---|---|
+| IRA | 2022-08-16 | −0.544 | 1.122 | −0.485 | 0.628 | 620,917 |
+| LCFS | 2023-01-03 | −9.431 | 2.106 | −4.479 | <0.001 | 538,128 |
+| RFS2 | 2021-01-04 | 15.552 | 6.164 | 2.523 | 0.012 | 538,178 |
+
+### Economic Magnitudes (IQR Effect)
+
+| Policy | Δ AR (75th − 25th exposure) |
+|---|---|
+| LCFS | −0.81 pp |
+| RFS2 | +1.32 pp |
+| IRA | −0.05 pp (not significant) |
+
+An interquartile increase in exposure maps to approximately −0.8 pp abnormal return for LCFS and +1.3 pp for RFS2 on the event window, with effects persisting to CAR at L=10.
+
+---
+
+## Stage 0 Extension: Current Status
+
+### Completed: Policy-Side Corpus & Source Infrastructure
+
+- **Official-source manifest**: 14 policy documents across IRA, LCFS, and RFS2 anchored to enrolled bill text, IRS notices, CARB amendments, and EPA rules, with provenance tracking (`p0_source_manifest.csv`, `p0_policy_docs_master.csv`).
+- **Clause-level extraction pipeline**: Implemented in `stage0_text_upgrade_p0_to_p23.ipynb`. Processes policy text into clause-level chunks, classifies mechanism channels (tax credit/subsidy, compliance cost, margin impact, credit market, demand pull, capex incentive, financing certainty), and scores five continuous dimensions (benefit, burden, specificity, certainty, breadth).
+- **Validation framework**: First-round human review on 24 clauses — mechanism match rate 54.2%, sign match rate 62.5%. Results in `outputs/stage0_text/validation/`.
+- **Structural diagnostic**: Identified that text-enhanced regressors within each policy produce identical t-statistics due to scalar rescaling of a common base term. This indicates the need for mechanism-specific firm exposures to achieve true mechanism separation. See `p0_3_diagnostic_note.txt`.
+
+### In Progress: Firm-Side Text Analysis
+
+- **Issuer universe routing**: 69 tickers → 66 issuers → 45 SEC-direct filers identified mechanically from the data.
+- **Batch 1 proof of concept**: SEC 10-K Item 1 "Business" sections extracted from EDGAR for 4 firms (AMTX, APD, BCPC, ALTO).
+- **Mechanism-specific firm exposure (v2)**: Policy-prototype × firm-text TF-IDF cosine similarity with domain gate, producing 4-dimensional mechanism exposure (subsidy, compliance, credit market, demand pull) per firm.
+- **Not yet completed**: Full 45-issuer extraction, mechanism-specific interaction regressions (SubsidyExposure × SubsidyIntensity, etc.), second-round validation.
+
+---
+
+## Repository Structure
+
+```
+code/
+├── stage1_weighted_event_study.py          # Stage 1: weighted event study
+├── stage2_exposure_twfe_panel.py           # Stage 2: Bartik-style TWFE panel
+└── stage0_text_upgrade_p0_to_p23.ipynb     # Stage 0: text analysis pipeline (P0→P2.3)
+
+data/
+├── Policy_Influenced_Stock_Price_With_FF_5_Factors.csv
+├── Financial_Ratios_Ticker.csv
+├── All_Daily_Policy_Data.csv
+├── {AMTX,ALTO,APD,BCPC}_business_section.txt   # SEC 10-K Item 1 extracts
+└── {subsidy,compliance,credit_market,demand_pull}_exposure_prototype.txt
+
+outputs/
+├── stage0_text/                         # Policy-side text infrastructure
+│   ├── p0_source_manifest.csv                   # Official source tracking
+│   ├── p0_policy_docs_master.csv                # Document registry
+│   ├── p0_3_diagnostic_note.txt                 # Structural diagnostic
+│   └── validation/                              # Human validation results
+│       ├── p0_validation_labeled.csv
+│       ├── p0_validation_summary.csv
+│       ├── p0_validation_mechanism_mismatches.csv
+│       └── p0_validation_sign_mismatches.csv
+└── firm_text_wip/                       # Firm-side (in progress, 4/45 issuers)
+    ├── p2_issuer_universe_map.csv
+    ├── p2_sec_direct_issuers.csv
+    ├── p2_batch1_firm_business_sections.csv
+    ├── p2_batch1_firm_exposure_schema_v2.csv
+    └── p2_batch1_exposure_v2_note.md
+
+docs/
+├── p1_research_update_memo.md           # Research update with results & limitations
+└── p1_project_summary_onepager.md       # One-page project summary
+```
+
+## Data
+
+The empirical analysis uses three datasets from WRDS:
+- **Policy Influenced Stock Price with FF 5 Factors** — 172,358 firm-days, 69 firms, 5 NAICS industries, 2014–2024
+- **Financial Ratios by Ticker** — firm fundamentals
+- **All Daily Policy Data** — daily policy intensity index, 14,844 observations
+
+## Methods
+
+- **Factor models**: Firm-level FF5 OLS in pre-event window [−120, −20]
+- **Event study**: Weighted Patell Z, Corrado rank, cluster bootstrap (B=2000)
+- **TWFE panel**: Two-way FE (firm + date) with two-way clustered SE via PanelOLS
+- **Text extraction**: TF-IDF + seed-dictionary cosine similarity classification
+- **Firm-text matching**: Policy mechanism prototypes × SEC 10-K text cosine similarity with domain gate
+- **Validation**: Stratified human review with mechanism and sign match rates
+
+## Requirements
+
+```
+python >= 3.10
+pandas, numpy, scipy, statsmodels
+scikit-learn (for Stage 0 text pipeline)
+matplotlib
+linearmodels (for PanelOLS in Stage 2)
+```
+
+## Authors
+
+Jingyi Yang (Vancouver School of Economics, UBC) and co-authors.
+
+## Status
+
+Stage 1 and Stage 2 are complete with published results. Stage 0 text extension is an active prototype — policy-side corpus infrastructure and validation are done; firm-side text analysis has a working proof of concept on 4 issuers with 41 remaining. Limitations and next steps are in [`docs/p1_research_update_memo.md`](docs/p1_research_update_memo.md).

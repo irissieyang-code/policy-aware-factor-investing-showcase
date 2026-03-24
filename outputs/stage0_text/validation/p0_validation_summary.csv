@@ -1,0 +1,10 @@
+metric,value
+n_rows,24.0
+mechanism_match_rate,0.5416666666666666
+sign_match_rate,0.625
+IRA_mechanism_match_rate,0.5
+IRA_sign_match_rate,0.875
+LCFS_mechanism_match_rate,0.625
+LCFS_sign_match_rate,0.375
+RFS2_mechanism_match_rate,0.5
+RFS2_sign_match_rate,0.625

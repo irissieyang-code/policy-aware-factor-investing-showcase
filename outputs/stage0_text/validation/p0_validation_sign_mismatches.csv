@@ -1,0 +1,10 @@
+chunk_id,policy,expected_sign,human_sign,text
+IRA_S40B_c01,IRA,ambiguous,negative,The fuel must achieve at least a 50 percent reduction in lifecycle greenhouse gas emissions compared to conventional jet fuel as determined under CORSIA methodology.
+LCFS_CI_c01,LCFS,ambiguous,negative,Beginning in 2024 the carbon intensity benchmark decreases by 3.5 percent per year from the 2010 baseline compared to the previous schedule of approximately 1.25 percent per year.
+LCFS_COMPLY_c04,LCFS,positive,negative,Third party verification of carbon intensity claims is mandatory.
+LCFS_COMPLY_c03,LCFS,positive,negative,The regulation requires annual reporting of fuel volumes carbon intensity values and credit transactions.
+LCFS_CREDIT_c03,LCFS,positive,ambiguous,Credit prices are determined by market trading and have historically ranged from 50 to 200 dollars per metric ton of CO2 equivalent.
+LCFS_CREDIT_c04,LCFS,negative,ambiguous,The amendments establish a new credit clearance market mechanism to manage price volatility and provide a price ceiling for compliance purposes.
+RFS2_OBLIG_c00,RFS2,positive,negative,Petroleum refiners and importers of gasoline and diesel fuel are designated as obligated parties under the Renewable Fuel Standard.
+RFS2_RIN_c01,RFS2,positive,ambiguous,Each RIN represents one gallon of renewable fuel equivalent and is categorized by fuel type D3 for cellulosic biofuel D4 for biomass based diesel D5 for advanced biofuel and D6 for conventional renewable fuel.
+RFS2_RIN_c04,RFS2,positive,ambiguous,Obligated parties may purchase RINs from renewable fuel producers or on the open market to satisfy their obligations.

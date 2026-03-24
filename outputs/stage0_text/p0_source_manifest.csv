@@ -1,0 +1,11 @@
+source_file,source_name,official_url,status
+BILLS-117hr5376enr.pdf,IRA bill text,https://www.govinfo.gov/content/pkg/BILLS-117hr5376enr/pdf/BILLS-117hr5376enr.pdf,local_downloaded
+IRS_Notice_2023_6.pdf,IRS SAF guidance,https://www.irs.gov/pub/irs-drop/n-23-06.pdf,local_downloaded
+IRS_Notice_2024_6.pdf,IRS SAF lifecycle GHG guidance,https://www.irs.gov/pub/irs-drop/n-24-06.pdf,local_downloaded
+IRS_Notice_2024_37.pdf,IRS SAF CSA guidance,https://www.irs.gov/pub/irs-drop/n-24-37.pdf,local_downloaded
+CARB_LCFS_2020_regulation.pdf,CARB LCFS regulation,https://ww2.arb.ca.gov/sites/default/files/2020-07/2020_lcfs_fro_oal-approved_unofficial_06302020.pdf,local_downloaded
+CARB_LCFS_2024_notice.pdf,CARB LCFS proposed amendment notice,https://ww2.arb.ca.gov/sites/default/files/barcu/regact/2024/lcfs2024/lcfs_notice.pdf,local_downloaded
+CARB_LCFS_Guidance_22_01_2024.pdf,CARB LCFS annual reporting guidance,https://ww2.arb.ca.gov/sites/default/files/classic/fuels/lcfs/guidance/lcfsguidance_22-01_04-05-2024.pdf,local_downloaded
+CARB_LCFS_2023_CCM_Compliance.pdf,CARB CCM compliance notice,https://ww2.arb.ca.gov/sites/default/files/2024-05/2023%20LCFS%20Credit%20Clearance%20Market%20Notice%20and%20Compliance%20Information.pdf,local_downloaded
+remote_official_pdf,EPA RFS annual rules NPRM,https://www.epa.gov/sites/default/files/2021-12/documents/rfs-2020-2021-2022-rvo-standards-nprm-2021-12-07.pdf,web_located_not_local
+remote_official_pdf,EPA RFS compliance guide,https://www.epa.gov/system/files/documents/2021-08/compliance-renewablefuel.pdf,web_located_not_local
