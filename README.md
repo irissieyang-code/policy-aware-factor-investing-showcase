@@ -26,33 +26,41 @@ Adds a text structuring layer to convert policy legislative language into struct
 
 ## Results
 
-### Stage 1: Weighted Event Study
+### Stage 1: Short-Window Pricing of Policy Shocks
 
-| Definition | Policy | Event | Window | n_treat | Mean CAR | Patell Z | Corrado Z | Bootstrap p |
+**Table R1. Weighted event study results.**
+
+| Definition | Policy | Event | Window | n_treat | Mean CAR (%) | Patell Z | Corrado Z | Bootstrap p |
 |---|---|---|---|---|---|---|---|---|
-| Wide | IRA | 2022-08-16 | [0,1] | 56 | 0.82% | 2.338 | −0.314 | 0.927 |
-| Wide | LCFS | 2023-01-03 | [0,1] | 51 | −0.39% | 0.731 | −3.046 | 0.955 |
-| Wide | RFS2 | 2021-01-04 | [0,1] | 21 | 0.79% | 2.075 | 4.837 | 0.072 |
+| Narrow (0/1) | IRA | 2022-08-16 | [0,1] | 4 | 0.535 | 0.928 | −0.556 | / |
+| Narrow (0/1) | LCFS | 2023-01-03 | [0,1] | 6 | 1.137 | −0.073 | 0.473 | / |
+| Narrow (0/1) | RFS2 | 2021-01-04 | [0,1] | 21 | 0.787 | 2.075 | 4.837 | / |
+| Wide (weighted) | IRA | 2022-08-16 | [0,1] | 56 | 0.821 | 2.338 | −0.314 | 0.927 |
+| Wide (weighted) | IRA | 2022-08-16 | [−1,1] | 56 | 0.153 | 0.183 | −1.487 | 0.880 |
+| Wide (weighted) | LCFS | 2023-01-03 | [0,1] | 51 | −0.385 | 0.731 | −3.046 | 0.955 |
+| Wide (weighted) | RFS2 | 2021-01-04 | [0,1] | 21 | 0.787 | 2.075 | 4.837 | 0.072 |
 
-RFS2 displays the cleanest signal across all windows. LCFS shows a negative response that strengthens as the window widens. IRA exhibits small, mixed short-window reactions consistent with the diffuse scope of the Act.
+RFS2 displays the cleanest signal: weighted treated firms earn positive, statistically significant CAR in all non-overlapping windows. LCFS shows a negative response that becomes clearer as the window widens, consistent with a gradual re-pricing of updated credit economics. IRA exhibits small, mixed short-window reactions consistent with the diffuse scope of the Act.
 
-### Stage 2: AR–TWFE Policy Betas
+### Stage 2: Exposure-Scaled Abnormal Returns
+
+**Table R2. AR–TWFE policy betas.**
 
 | Policy | Event | β(ExpoQuick) | se | t | p | N |
 |---|---|---|---|---|---|---|
-| IRA | 2022-08-16 | −0.544 | 1.122 | −0.485 | 0.628 | 620,917 |
-| LCFS | 2023-01-03 | −9.431 | 2.106 | −4.479 | <0.001 | 538,128 |
-| RFS2 | 2021-01-04 | 15.552 | 6.164 | 2.523 | 0.012 | 538,178 |
+| IRA | 2022-08-16 | −0.5440 | 1.1215 | −0.485 | 0.6276 | 620,917 |
+| LCFS | 2023-01-03 | −9.4307 | 2.1056 | −4.479 | 0 | 538,128 |
+| RFS2 | 2021-01-04 | 15.552 | 6.164 | 2.523 | 0.0116 | 538,178 |
 
-### Economic Magnitudes (IQR Effect)
+**Table R3. Economic magnitudes (IQR effect).**
 
-| Policy | Δ AR (75th − 25th exposure) |
-|---|---|
-| LCFS | −0.81 pp |
-| RFS2 | +1.32 pp |
-| IRA | −0.05 pp (not significant) |
+| Policy | Event | β(AR–TWFE) | Exposure IQR | Δ AR (75th − 25th) |
+|---|---|---|---|---|
+| IRA | 2022-08-16 | −0.5440 | 0.000859 | −0.047 pp |
+| LCFS | 2023-01-03 | −9.4307 | 0.000855 | −0.806 pp |
+| RFS2 | 2021-01-04 | 15.552 | 0.000846 | +1.316 pp |
 
-An interquartile increase in exposure maps to approximately −0.8 pp abnormal return for LCFS and +1.3 pp for RFS2 on the event window, with effects persisting to CAR at L=10.
+Moving from the 25th to the 75th exposure percentile lowers abnormal returns by approximately 0.81 pp for LCFS and raises them by approximately 1.32 pp for RFS2. These magnitudes are comparable to standard factor shocks and large enough to matter for portfolio construction.
 
 ---
 
@@ -63,7 +71,7 @@ An interquartile increase in exposure maps to approximately −0.8 pp abnormal r
 - **Official-source manifest**: 14 policy documents across IRA, LCFS, and RFS2 anchored to enrolled bill text, IRS notices, CARB amendments, and EPA rules, with provenance tracking (`p0_source_manifest.csv`, `p0_policy_docs_master.csv`).
 - **Clause-level extraction pipeline**: Implemented in `stage0_text_upgrade_p0_to_p23.ipynb`. Processes policy text into clause-level chunks, classifies mechanism channels (tax credit/subsidy, compliance cost, margin impact, credit market, demand pull, capex incentive, financing certainty), and scores five continuous dimensions (benefit, burden, specificity, certainty, breadth).
 - **Validation framework**: First-round human review on 24 clauses — mechanism match rate 54.2%, sign match rate 62.5%. Results in `outputs/stage0_text/validation/`.
-- **Structural diagnostic**: Identified that text-enhanced regressors within each policy produce identical t-statistics due to scalar rescaling of a common base term. This indicates the need for mechanism-specific firm exposures to achieve true mechanism separation. See `p0_3_diagnostic_note.txt`.
+- **Structural diagnostic**: Analysis of the text measurement design revealed that policy-level text scores (one constant per mechanism per policy) cannot create cross-sectional variation in mechanism-specific exposure. True mechanism separation requires firm-specific mechanism exposures, which motivates the firm-side text pipeline. See `p0_3_diagnostic_note.txt`.
 
 ### In Progress: Firm-Side Text Analysis
 
@@ -144,7 +152,6 @@ scikit-learn (for Stage 0 text pipeline)
 matplotlib
 linearmodels (for PanelOLS in Stage 2)
 ```
-
 
 ## Authors
 
