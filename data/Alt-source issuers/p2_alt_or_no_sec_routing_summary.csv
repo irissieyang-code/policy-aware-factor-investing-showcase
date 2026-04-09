@@ -1,0 +1,7 @@
+route_priority,likely_sample_decision,n
+tier_1_alt_core,edge,3
+tier_1_alt_core,keep,2
+tier_2_adjacent,edge,5
+tier_3_speculative,edge,3
+tier_4_deduplicate,edge,1
+tier_5_identity_cleanup,drop,7

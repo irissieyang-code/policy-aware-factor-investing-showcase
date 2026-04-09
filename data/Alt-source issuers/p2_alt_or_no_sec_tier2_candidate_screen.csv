@@ -1,0 +1,6 @@
+ticker,issuer,candidate_status,integration_priority,reason
+REPYY,"Repsol, S.A. ADR",strong_adjacent_candidate,medium_high,"Among the non-SEC adjacent names, this is the strongest candidate for future international extension work."
+AIQUY,L’Air Liquide S.A. ADR,adjacent_hydrogen_candidate,medium,"Good hydrogen-transition analogue to APD/LIN, but still outside the SEC-direct operating universe."
+CTXAY,Ampol Limited ADR,adjacent_refining_candidate,medium,Useful for international refining-transition coverage if non-SEC annual-report extraction is standardized.
+MGYOY,MOL Hungarian Oil and Gas Plc ADR,adjacent_refining_candidate,medium,"Boundary-style integrated refiner with transition relevance, but not direct core-fit."
+RLNIY,Reliance Industries Ltd ADR,adjacent_conglomerate_candidate,low_medium,"Large and diversified platform with possible fuels-transition overlap, but text dilution risk is high."

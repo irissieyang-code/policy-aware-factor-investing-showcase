@@ -1,0 +1,9 @@
+sample_decision,business_text_status,n
+control,extracted_batch1,1
+control,official_sec_evidence_reviewed,6
+drop,official_identity_reviewed,3
+edge,official_company_materials_reviewed,2
+edge,official_materials_reviewed,3
+edge,official_sec_evidence_reviewed,20
+keep,extracted_batch1,2
+keep,official_sec_evidence_reviewed,8

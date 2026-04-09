@@ -1,0 +1,6 @@
+ticker,issuer,candidate_status,integration_priority,reason
+CRDE,"Cardinal Ethanol, LLC",candidate_for_future_stage2_merge,high,Active ethanol platform with current company SEC-filing page and direct fuel-production fit.
+REGX,"Red Trail Energy, LLC",family_link_holdout,medium,"Mechanism fit is strong, but Gevo asset acquisition creates duplicate-family risk."
+CCGY,China Clean Energy Inc.,legacy_holdout,low,"Fuel relevance exists in legacy materials, but current operating status is unclear."
+MEIL,Methes Energies International Ltd.,legacy_holdout,low,"Historical biodiesel fit is clear, but current operating evidence is weak."
+XFLS,Xfuels Inc.,speculative_holdout,low,Mixed identity and project-stage language make the issuer too noisy for direct merge use.

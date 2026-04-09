@@ -1,0 +1,4 @@
+ticker,issuer,primary_mechanism,secondary_mechanism,ecosystem_role,confidence
+PMBY,PMB Aerospace Corporation,none_or_weak,none_or_weak,dropped_aerospace_identity_mismatch,low
+PTOI,"Plastic2Oil, Inc.",none_or_weak,none_or_weak,dropped_revoked_registration_legacy_name,low
+QREE,"Quantum Energy, Inc.",none_or_weak,none_or_weak,dropped_photonic_energy_identity_mismatch,low

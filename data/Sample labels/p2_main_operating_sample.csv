@@ -1,0 +1,11 @@
+ticker,issuer,primary_mechanism,secondary_mechanism,ecosystem_role,confidence
+ALTO,"Alto Ingredients, Inc.",demand_pull_exposure,subsidy_exposure,core_low_carbon_fuel_tax_credit_player,medium_high
+AMTX,"Aemetis, Inc.",credit_market_exposure,compliance_exposure,core_low_carbon_fuel_credit_linked_producer,high
+CLMT,"Calumet, Inc.",subsidy_exposure,demand_pull_exposure,core_saf_renewable_diesel_producer,medium
+DINO,HF Sinclair Corporation,demand_pull_exposure,compliance_exposure,core_refining_plus_renewable_diesel_operator,medium_high
+FF,FutureFuel Corp.,subsidy_exposure,compliance_exposure,core_biodiesel_specialty_chemicals_mix,medium_high
+GEVO,"Gevo, Inc.",subsidy_exposure,demand_pull_exposure,core_saf_developer,high
+GPRE,Green Plains Inc.,credit_market_exposure,demand_pull_exposure,core_ethanol_biorefining_platform,high
+HEOL,"Highwater Ethanol, LLC",demand_pull_exposure,credit_market_exposure,core_ethanol_producer,medium
+REX,REX American Resources Corporation,credit_market_exposure,demand_pull_exposure,core_ethanol_investor_operator,medium_high
+VLO,Valero Energy Corporation,compliance_exposure,demand_pull_exposure,core_refining_renewable_diesel_ethanol_platform,high

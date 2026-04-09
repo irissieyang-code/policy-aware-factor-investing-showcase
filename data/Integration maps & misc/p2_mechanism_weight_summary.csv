@@ -1,0 +1,5 @@
+mechanism,n_primary,n_secondary,manual_weight_sum,confidence_weighted_sum,stage2_input_weight_sum,main_sample_weight_sum,edge_sample_weight_sum,control_sample_weight_sum
+subsidy_exposure,5,2,6.0,4.574999999999999,3.9349999999999996,2.975,0.96,0.0
+compliance_exposure,15,17,23.5,17.725,10.450000000000003,2.35,6.5249999999999995,1.5749999999999997
+credit_market_exposure,3,4,5.0,4.55,4.01,3.2,0.81,0.0
+demand_pull_exposure,17,13,23.5,17.199999999999996,12.19,4.675,7.515,0.0

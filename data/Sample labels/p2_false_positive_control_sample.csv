@@ -1,0 +1,8 @@
+ticker,issuer,primary_mechanism,secondary_mechanism,ecosystem_role,confidence
+BCPC,Balchem Corporation,compliance_exposure,none_or_weak,non_core_regulatory_control,high
+BLGO,"BioLargo, Inc.",compliance_exposure,none_or_weak,non_core_water_treatment_environmental_control,medium
+CE,Celanese Corporation,compliance_exposure,none_or_weak,non_core_specialty_chemicals_control,medium
+IFF,International Flavors & Fragrances Inc.,none_or_weak,compliance_exposure,non_core_ingredients_control,medium
+OCLN,"OriginClear, Inc.",compliance_exposure,none_or_weak,non_core_water_infrastructure_control,medium
+SXC,"SunCoke Energy, Inc.",compliance_exposure,none_or_weak,non_core_coke_and_industrial_services_control,medium
+SXT,Sensient Technologies Corporation,none_or_weak,compliance_exposure,non_core_flavors_colors_ingredients_control,medium

@@ -1,0 +1,13 @@
+ticker,issuer,candidate_status,integration_priority,reason
+CRDE,"Cardinal Ethanol, LLC",candidate_for_future_stage2_merge,high,Active ethanol platform with current company SEC-filing page and direct fuel-production fit.
+REGX,"Red Trail Energy, LLC",family_link_holdout,medium,"Mechanism fit is strong, but Gevo asset acquisition creates duplicate-family risk."
+CCGY,China Clean Energy Inc.,legacy_holdout,low,"Fuel relevance exists in legacy materials, but current operating status is unclear."
+MEIL,Methes Energies International Ltd.,legacy_holdout,low,"Historical biodiesel fit is clear, but current operating evidence is weak."
+XFLS,Xfuels Inc.,speculative_holdout,low,Mixed identity and project-stage language make the issuer too noisy for direct merge use.
+REPYY,"Repsol, S.A. ADR",strong_adjacent_candidate,medium_high,"Among the non-SEC adjacent names, this is the strongest candidate for future international extension work."
+AIQUY,L’Air Liquide S.A. ADR,adjacent_hydrogen_candidate,medium,"Good hydrogen-transition analogue to APD/LIN, but still outside the SEC-direct operating universe."
+CTXAY,Ampol Limited ADR,adjacent_refining_candidate,medium,Useful for international refining-transition coverage if non-SEC annual-report extraction is standardized.
+MGYOY,MOL Hungarian Oil and Gas Plc ADR,adjacent_refining_candidate,medium,"Boundary-style integrated refiner with transition relevance, but not direct core-fit."
+RLNIY,Reliance Industries Ltd ADR,adjacent_conglomerate_candidate,low_medium,"Large and diversified platform with possible fuels-transition overlap, but text dilution risk is high."
+MOTNF,PowerTap Hydrogen Capital Corp.,adjacent_hydrogen_candidate,medium_low,Hydrogen-fueling exposure is real but sits outside the liquid-fuels core.
+IAHL,IAHL Corp.,adjacent_gas_services_candidate,low,Alternative-energy and LNG services are only indirectly connected to the main policy mechanism set.
