@@ -1,162 +1,114 @@
-# From Causal Evidence to Mechanism-Aware Signals
+# Policy Risk Stress-Testing Framework for Sustainable Fuel Equities
 
-**A Dual-Track Framework for Policy-Aware Factor Investing in the Sustainable Fuel Sector**
+**Mechanism-level exposure mapping for climate policy repricing risk**
 
-This repository contains the research pipeline and ongoing text-analysis extension for a project studying how major U.S. climate policy shocks are priced in the cross-section of sustainable fuel equities.
+## What this project does
 
----
+This project takes three U.S. climate policies — the Inflation Reduction Act (IRA), California's Low Carbon Fuel Standard (LCFS), and the Renewable Fuel Standard 2 (RFS2) — and asks a practical question:
 
-## Project Structure
+> If these policies tighten, shift, or expand, which firms are most exposed, through which channel, and by roughly how much?
 
-The project has a completed empirical core (Stage 1 + Stage 2) and an in-progress text measurement extension (Stage 0).
+The output is **not a forecast**. It is a **stress-test framework** that decomposes policy risk into mechanism-level channels, maps firm-level exposure to each channel, and produces directional signals with honestly stated limitations — designed to be approximately right rather than precisely wrong.
 
-### Stage 1 — Weighted Event Study (Completed)
+## Why this matters for institutional ESG risk management
 
-Detects short-window abnormal returns around three policy events using firm-level Fama–French 5-factor models. A wide treatment definition assigns value-chain weights (core = 1.0, edge = 0.5) to capture indirect policy exposure. Test statistics include Patell Z, Corrado rank test, and cluster bootstrap p-values.
+When an investment team faces a new climate policy, the instinctive question is "is this good or bad for our portfolio?" That question is too blunt to act on. This framework offers a more useful decomposition:
 
-### Stage 2 — Exposure-Based TWFE Panel (Completed)
+1. **Which channel does the policy operate through?** A subsidy, a compliance mandate, a credit-market shift, or a demand-side pull are four different risks that hit four different types of firms.
+2. **Where is the risk concentrated?** This project shows that LCFS repricing risk sits in a narrow set of core names, not the broad sector — meaning diligence and engagement resources should be concentrated, not spread thin.
+3. **Where is there no risk to worry about?** RFS2 produces no detectable repricing signal under any specification. That is useful information: do not over-allocate risk budget to a channel that the market has already absorbed.
 
-Converts event-identified signals into a structural policy-aware factor by interacting pre-policy firm exposure with daily policy intensity in a Bartik-style two-way fixed-effects panel. Reports AR and CAR regressions with clustered standard errors and lead–lag event-time dynamics.
+The deliverable is not a 66-company scoring database. It is a **replicable methodology**: given any new policy, how to decompose it into testable mechanism channels, define firm-level exposure, and validate whether the market actually prices each channel — with clear acknowledgement of what the data can and cannot support.
 
-### Stage 0 — Text-Based Policy Mechanism Measurement (In Progress)
+## How it works
 
-Adds a text structuring layer to convert policy legislative language into structured mechanism variables. The goal is to move from narrative policy interpretation to auditable, testable mechanism measurement. This extension includes both a policy-side text pipeline and a firm-side annual-filing text pipeline.
+The framework has three layers:
 
----
+**Layer 1 — Policy pulse detection (Stage 1)**
+A weighted event study detects whether policy announcements produce abnormal returns among exposed firms. Value-chain weights (core = 1.0, edge = 0.5) improve statistical power over narrow 0/1 treatment definitions.
 
-## Results
+**Layer 2 — Exposure-scaled panel (Stage 2)**
+A two-way fixed-effects panel explains *who* moves and *by how much* by interacting pre-policy firm exposure with daily policy intensity (Bartik-style). The baseline is a Fama–French 5-factor model estimated in the pre-event window — this serves as the "if nothing changes" scenario.
 
-### Stage 1: Short-Window Pricing of Policy Shocks
+**Layer 3 — Mechanism decomposition (Stage 0)**
+Policy exposure is decomposed into four channels:
+- **Subsidy** — direct fiscal incentives, tax credits, production subsidies
+- **Compliance** — regulatory obligations, carbon-intensity benchmarks, reporting
+- **Credit-market** — tradeable credits, RIN economics, carbon credit pricing
+- **Demand-pull** — blending mandates, volume obligations, market creation
 
-**Table R1. Weighted event study results.**
+Firm-side exposure is measured by matching SEC 10-K Item 1 business descriptions to mechanism prototypes via TF-IDF cosine similarity, then manually calibrated issuer-by-issuer (45 SEC-direct + 21 alt-source issuers). Policy-side intensity is derived from official documents (IRA enrolled bill, CARB LCFS amendments, EPA RFS annual rules) time-expanded into daily mechanism series.
 
-| Definition | Policy | Event | Window | n_treat | Mean CAR (%) | Patell Z | Corrado Z | Bootstrap p |
-|---|---|---|---|---|---|---|---|---|
-| Narrow (0/1) | IRA | 2022-08-16 | [0,1] | 4 | 0.535 | 0.928 | −0.556 | / |
-| Narrow (0/1) | LCFS | 2023-01-03 | [0,1] | 6 | 1.137 | −0.073 | 0.473 | / |
-| Narrow (0/1) | RFS2 | 2021-01-04 | [0,1] | 21 | 0.787 | 2.075 | 4.837 | / |
-| Wide (weighted) | IRA | 2022-08-16 | [0,1] | 56 | 0.821 | 2.338 | −0.314 | 0.927 |
-| Wide (weighted) | IRA | 2022-08-16 | [−1,1] | 56 | 0.153 | 0.183 | −1.487 | 0.880 |
-| Wide (weighted) | LCFS | 2023-01-03 | [0,1] | 51 | −0.385 | 0.731 | −3.046 | 0.955 |
-| Wide (weighted) | RFS2 | 2021-01-04 | [0,1] | 21 | 0.787 | 2.075 | 4.837 | 0.072 |
+## Key results
 
-RFS2 displays the cleanest signal: weighted treated firms earn positive, statistically significant CAR in all non-overlapping windows. LCFS shows a negative response that becomes clearer as the window widens, consistent with a gradual re-pricing of updated credit economics. IRA exhibits small, mixed short-window reactions consistent with the diffuse scope of the Act.
+### What is approximately right
 
-### Stage 2: Exposure-Scaled Abnormal Returns
+| Policy | Finding | Practitioner implication |
+|--------|---------|------------------------|
+| **LCFS** | 3 mechanism channels strongly negative in core firms (p < 0.007) | Repricing risk is real and multi-channel — stress-test discount rates for core LCFS-exposed positions |
+| **LCFS** | All signals vanish when edge firms are added | Risk is concentrated in a narrow set of names, not diffuse sector exposure — prioritize diligence accordingly |
+| **IRA** | Credit-market channel positive in core (p = 0.048); demand-pull negative in broader sample (p < 0.001) | Core vs peripheral firms price IRA in opposite directions — exposure direction depends on where in the value chain |
+| **RFS2** | No significant channel in any sample or specification | Current RFS2 framework does not create detectable repricing risk — do not over-allocate risk budget here |
 
-**Table R2. AR–TWFE policy betas.**
+### What the numbers mean (and don't mean)
 
-| Policy | Event | β(ExpoQuick) | se | t | p | N |
-|---|---|---|---|---|---|---|
-| IRA | 2022-08-16 | −0.5440 | 1.1215 | −0.485 | 0.6276 | 620,917 |
-| LCFS | 2023-01-03 | −9.4307 | 2.1056 | −4.479 | 0 | 538,128 |
-| RFS2 | 2021-01-04 | 15.552 | 6.164 | 2.523 | 0.0116 | 538,178 |
+The mechanism coefficients give **direction and relative magnitude**, not precise point estimates. A β of −503 on demand-pull for LCFS means "more demand-pull-exposed firms are repriced more negatively" — the exact number reflects variable scaling, not investable basis points. The useful information is the direction (negative), the concentration (core names only), and the multi-channel consistency.
 
-**Table R3. Economic magnitudes (IQR effect).**
+## Limitations (stated upfront)
 
-| Policy | Event | β(AR–TWFE) | Exposure IQR | Δ AR (75th − 25th) |
-|---|---|---|---|---|
-| IRA | 2022-08-16 | −0.5440 | 0.000859 | −0.047 pp |
-| LCFS | 2023-01-03 | −9.4307 | 0.000855 | −0.806 pp |
-| RFS2 | 2021-01-04 | 15.552 | 0.000846 | +1.316 pp |
+- **Small sample**: 66 firms in the NAICS-screened universe, 11 tickers in main-only, 35 in main+edge. Results indicate direction and relative ordering, not population parameters. This is a methodology demo, not a portfolio-wide scoring tool.
+- **Text-based measurement**: Firm exposure scores are derived from business descriptions matched to prototypes. The direction is credible; exact magnitudes are approximate. No ground-truth validation (e.g., actual subsidy income or compliance cost breakdowns) has been performed.
+- **Edge dilution is a feature**: The fact that signals disappear when boundary firms are added is not a data problem — it means risk is concentrated, which is useful for portfolio prioritization.
+- **Not a trading signal**: This is a risk-monitoring and stress-testing tool, not an alpha signal. No claim is made about out-of-sample predictive power.
 
-Moving from the 25th to the 75th exposure percentile lowers abnormal returns by approximately 0.81 pp for LCFS and raises them by approximately 1.32 pp for RFS2. These magnitudes are comparable to standard factor shocks and large enough to matter for portfolio construction.
+## What is transferable
 
----
+The specific results are about three U.S. sustainable fuel policies. The methodology is not policy-specific:
 
-## Stage 0 Extension: Current Status
+| Step | What was done here | What it generalises to |
+|------|-------------------|----------------------|
+| Mechanism decomposition | IRA/LCFS/RFS2 → subsidy, compliance, credit-market, demand-pull | Any policy → identify the channels through which it affects firms |
+| Firm-side exposure | SEC 10-K text matching + manual calibration | Any firm universe → map business descriptions to policy-relevant channels |
+| Baseline vs scenario | Pre-event FF5 model vs post-event mechanism intensity | Any stress test → define "if nothing changes" and "if policy changes" |
+| Direction validation | DID with progressive controls and robustness checks | Any hypothesis → test whether the market actually prices the channel |
+| Risk concentration | main-only vs main+edge sample split | Any portfolio → distinguish concentrated risk from diffuse noise |
 
-### Completed: Policy-Side Corpus & Source Infrastructure
+## Repository structure
 
-- **Official-source manifest**: 14 policy documents across IRA, LCFS, and RFS2 anchored to enrolled bill text, IRS notices, CARB amendments, and EPA rules, with provenance tracking (`p0_source_manifest.csv`, `p0_policy_docs_master.csv`).
-- **Clause-level extraction pipeline**: Implemented in `stage0_text_upgrade_p0_to_p23.ipynb`. Processes policy text into clause-level chunks, classifies mechanism channels (tax credit/subsidy, compliance cost, margin impact, credit market, demand pull, capex incentive, financing certainty), and scores five continuous dimensions (benefit, burden, specificity, certainty, breadth).
-- **Validation framework**: First-round human review on 24 clauses — mechanism match rate 54.2%, sign match rate 62.5%. Results in `outputs/stage0_text/validation/`.
-- **Structural diagnostic**: Analysis of the text measurement design revealed that policy-level text scores (one constant per mechanism per policy) cannot create cross-sectional variation in mechanism-specific exposure. True mechanism separation requires firm-specific mechanism exposures, which motivates the firm-side text pipeline. See `p0_3_diagnostic_note.txt`.
+### `code/`
+Stage 2 mechanism-specific patch scripts with progressive control strengthening (baseline → policy-daily → controls → hybrid → market+fundamentals → de-collinearized).
 
-### In Progress: Firm-Side Text Analysis
+### `data/`
+- **Policy mechanism layer**: official document priors, daily mechanism intensity files (v1 → v2 hardened → v3 RFS2-event-aligned)
+- **Firm calibration layer**: SEC-direct issuer calibration (45 issuers), alt-source routing (21 issuers), integration maps with policy-specific shrinkage weights
+- **Sample labels**: keep / edge / control / drop per issuer
 
-- **Issuer universe routing**: 69 tickers → 66 issuers → 45 SEC-direct filers identified mechanically from the data.
-- **Batch 1 proof of concept**: SEC 10-K Item 1 "Business" sections extracted from EDGAR for 4 firms (AMTX, APD, BCPC, ALTO).
-- **Mechanism-specific firm exposure (v2)**: Policy-prototype × firm-text TF-IDF cosine similarity with domain gate, producing 4-dimensional mechanism exposure (subsidy, compliance, credit market, demand pull) per firm.
-- **Not yet completed**: Full 45-issuer extraction, mechanism-specific interaction regressions (SubsidyExposure × SubsidyIntensity, etc.), second-round validation.
+### `docs/`
+Process notes covering each stage: calibration, queue management, mechanism patch, control strengthening, timing fix, and integrated rerun.
 
----
+### `outputs/`
+Result tables, comparison tables, interpretation summaries, coverage diagnostics. Key files:
+- `p2_25_stage0_stage2_refined_results_with_rfs2_fix.csv` — final integrated results
+- `p2_25_stage0_stage2_refined_interpretation_summary.csv` — best specification per policy × sample
+- `p2_24_rfs2_timing_diagnostic_after_fix.csv` — RFS2 timing correction documentation
 
-## Repository Structure
+### `outputs/stage2_mechanism_outputs/`
+Raw Stage 2 regression text outputs from the early rerun stage.
 
-```
-code/
-├── stage1_weighted_event_study.py          # Stage 1: weighted event study
-├── stage2_exposure_twfe_panel.py           # Stage 2: Bartik-style TWFE panel
-└── stage0_text_upgrade_p0_to_p23.ipynb     # Stage 0: text analysis pipeline (P0→P2.3)
+## Methodology at a glance
 
-data/
-├── All_Daily_Policy_Data.csv
-├──   [not included in public repo] Policy_Influenced_Stock_Price_With_FF_5_Factors.csv
-├──   [not included in public repo] Financial_Ratios_Ticker.csv
-├──   [not included in public repo] {AMTX,ALTO,APD,BCPC}_business_section.txt   # SEC 10-K Item 1 extracts
-└── {subsidy,compliance,credit_market,demand_pull}_exposure_prototype.txt
+| Component | Approach | Purpose |
+|-----------|----------|---------|
+| Abnormal returns | Fama–French 5-factor residuals | Baseline: what returns look like if nothing changes |
+| Event detection | Weighted CAR + Patell Z + Corrado rank + bootstrap | Does the policy create a detectable market reaction? |
+| Exposure panel | TWFE with ExpoQuick = Exposure_pre × Post × dpi | Which firms react more, and by how much? |
+| Mechanism decomposition | 4-channel exposure × 4-channel intensity | Through which channel does the risk transmit? |
+| Robustness | Single vs joint mechanism, main-only vs main+edge, 6 control specifications | Are the results stable or fragile? |
 
-outputs/
-├── stage0_text/                         # Policy-side text infrastructure
-│   ├── p0_source_manifest.csv                   # Official source tracking
-│   ├── p0_policy_docs_master.csv                # Document registry
-│   ├── p0_3_diagnostic_note.txt                 # Structural diagnostic
-│   └── validation/                              # Human validation results
-│       ├── p0_validation_labeled.csv
-│       ├── p0_validation_summary.csv
-│       ├── p0_validation_mechanism_mismatches.csv
-│       └── p0_validation_sign_mismatches.csv
-└── firm_text_wip/                       # Firm-side (in progress, 4/45 issuers)
-    ├── p2_issuer_universe_map.csv
-    ├── p2_sec_direct_issuers.csv
-    ├── p2_batch1_firm_business_sections.csv
-    ├── p2_batch1_firm_exposure_schema_v2.csv
-    └── p2_batch1_exposure_v2_note.md
+## Original paper
 
-docs/
-├── p1_research_update_memo.md           # Research update with results & limitations
-└── p1_project_summary_onepager.md       # One-page project summary
-```
+Yang, Du, He, Liu, Xia (2025). "From Causal Evidence to Actionable Signals: A Dual-Track Framework for Policy-Aware Factor Investing in the Sustainable Fuel Sector." Full paper for the 21st CRRC, Sub-theme 6: CSR and Global Governance.
 
-## Data
+## How to use this repo
 
-The empirical analysis uses three datasets from WRDS:
-- **Policy Influenced Stock Price with FF 5 Factors** — 172,358 firm-days, 69 firms, 5 NAICS industries, 2014–2024
-- **Financial Ratios by Ticker** — firm fundamentals
-- **All Daily Policy Data** — daily policy intensity index, 14,844 observations
-
-## Data Note
-
-This public repository is a presentation version prepared for research discussion.
-
-Some input datasets are not included because they are derived from licensed academic databases or reconstructed from public filing text through a separate preprocessing workflow.
-
-The repository retains the core code structure, documentation, and selected outputs necessary to illustrate the research design and implementation.
-
-## Methods
-
-- **Factor models**: Firm-level FF5 OLS in pre-event window [−120, −20]
-- **Event study**: Weighted Patell Z, Corrado rank, cluster bootstrap (B=2000)
-- **TWFE panel**: Two-way FE (firm + date) with two-way clustered SE via PanelOLS
-- **Text extraction**: TF-IDF + seed-dictionary cosine similarity classification
-- **Firm-text matching**: Policy mechanism prototypes × SEC 10-K text cosine similarity with domain gate
-- **Validation**: Stratified human review with mechanism and sign match rates
-
-## Requirements
-
-```
-python >= 3.10
-pandas, numpy, scipy, statsmodels
-scikit-learn (for Stage 0 text pipeline)
-matplotlib
-linearmodels (for PanelOLS in Stage 2)
-```
-
-## Authors
-
-Jingyi Yang (Vancouver School of Economics, UBC) and co-authors.
-
-## Status
-
-Stage 1 and Stage 2 are complete with published results. Stage 0 text extension is an active prototype — policy-side corpus infrastructure and validation are done; firm-side text analysis has a working proof of concept on 4 issuers with 41 remaining. Limitations and next steps are in [`docs/p1_research_update_memo.md`](docs/p1_research_update_memo.md).
+Replace the root `README.md` with this file, then unzip the update package into the repo root. The folder structure in the zip matches the repository layout. Review changes before committing.
