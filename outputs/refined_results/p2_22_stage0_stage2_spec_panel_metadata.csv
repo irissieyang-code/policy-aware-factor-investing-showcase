@@ -1,0 +1,7 @@
+sample_set,policy,event_date,unique_tickers,panel_rows_pre_dropna
+main_only,IRA,2022-08-16,11,831
+main_only,LCFS,2023-01-03,11,826
+main_only,RFS2,2021-01-04,11,815
+main_plus_edge,IRA,2022-08-16,35,3039
+main_plus_edge,LCFS,2023-01-03,35,3010
+main_plus_edge,RFS2,2021-01-04,35,2975

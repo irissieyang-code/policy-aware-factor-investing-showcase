@@ -1,0 +1,16 @@
+var,coef,se,t,p,policy,event,model
+ExpoQuick_it,-0.309,0.07,-4.443,0.0,IRA,2022-08-16,baseline
+subsidy_expo_it,-0.8737,0.246,-3.557,0.0,IRA,2022-08-16,mechanism
+compliance_expo_it,-3.0917,1.571,-1.968,0.049,IRA,2022-08-16,mechanism
+credit_market_expo_it,4.8963,28.074,0.174,0.862,IRA,2022-08-16,mechanism
+demand_pull_expo_it,-1.1124,0.581,-1.914,0.056,IRA,2022-08-16,mechanism
+ExpoQuick_it,-0.0303,0.055,-0.551,0.582,LCFS,2023-01-03,baseline
+subsidy_expo_it,4.0089,7.628,0.526,0.599,LCFS,2023-01-03,mechanism
+compliance_expo_it,0.2743,1.477,0.186,0.853,LCFS,2023-01-03,mechanism
+credit_market_expo_it,-0.2632,0.58,-0.454,0.65,LCFS,2023-01-03,mechanism
+demand_pull_expo_it,-0.7432,1.836,-0.405,0.686,LCFS,2023-01-03,mechanism
+ExpoQuick_it,0.3318,0.111,2.987,0.003,RFS2,2021-01-04,baseline
+subsidy_expo_it,105.6268,28.506,3.705,0.0,RFS2,2021-01-04,mechanism
+compliance_expo_it,-0.3849,2.692,-0.143,0.886,RFS2,2021-01-04,mechanism
+credit_market_expo_it,1.5045,0.664,2.267,0.023,RFS2,2021-01-04,mechanism
+demand_pull_expo_it,-2.572,5.275,-0.488,0.626,RFS2,2021-01-04,mechanism

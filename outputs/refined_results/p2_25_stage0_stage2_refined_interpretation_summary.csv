@@ -1,0 +1,7 @@
+policy,sample_set,n_signals_p_lt_0_05,n_signals_p_lt_0_10,best_specification,best_var,best_coef,best_pval,baseline_coef,baseline_pval
+IRA,main_only,1,2,joint_mechanism,credit_market_expo_it,143.63955141343652,0.0483385646905734,2.5200952535314003,0.1736954700275561
+IRA,main_plus_edge,3,3,single_mechanism,demand_pull_expo_it,-0.3745407650726973,0.0005299773867078,-0.2192327070608369,0.0005671022563622
+LCFS,main_only,4,5,joint_mechanism,demand_pull_expo_it,-503.0920056521644,1.3048923313098464e-07,-0.5169961646605433,0.1363592471981096
+LCFS,main_plus_edge,0,0,,,,,-0.1761214023760992,0.1441247497498136
+RFS2,main_only,0,0,,,,,-0.0578457553163415,0.8669083090486505
+RFS2,main_plus_edge,0,0,,,,,-0.0519542202518603,0.9115586288716784

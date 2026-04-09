@@ -1,0 +1,28 @@
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                  AR_dm   R-squared:                       0.000
+Model:                            OLS   Adj. R-squared:                  0.000
+Method:                 Least Squares   F-statistic:                     17.01
+Date:                Mon, 06 Apr 2026   Prob (F-statistic):           0.000227
+Time:                        08:56:44   Log-Likelihood:                 5340.2
+No. Observations:                3038   AIC:                        -1.068e+04
+Df Residuals:                    3036   BIC:                        -1.066e+04
+Df Model:                           1                                         
+Covariance Type:              cluster                                         
+===================================================================================
+                      coef    std err          z      P>|z|      [0.025      0.975]
+-----------------------------------------------------------------------------------
+const           -6.641e-19   1.06e-07  -6.29e-12      1.000   -2.07e-07    2.07e-07
+ExpoQuick_it_dm    -0.3090      0.075     -4.124      0.000      -0.456      -0.162
+logM_dm                  0          0        nan        nan           0           0
+==============================================================================
+Omnibus:                     3752.044   Durbin-Watson:                   2.052
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):          2795920.360
+Skew:                          -5.924   Prob(JB):                         0.00
+Kurtosis:                     151.146   Cond. No.                          inf
+==============================================================================
+
+Notes:
+[1] Standard Errors are robust to cluster correlation (cluster)
+[2] The smallest eigenvalue is      0. This might indicate that there are
+strong multicollinearity problems or that the design matrix is singular.

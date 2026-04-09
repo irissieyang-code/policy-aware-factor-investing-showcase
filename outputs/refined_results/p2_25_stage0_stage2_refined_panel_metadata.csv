@@ -1,0 +1,7 @@
+sample_set,policy,nobs,unique_tickers,nobs_window
+main_only,IRA,831.0,11,
+main_plus_edge,IRA,3039.0,35,
+main_only,LCFS,826.0,11,
+main_plus_edge,LCFS,3010.0,35,
+main_only,RFS2,,11,815.0
+main_plus_edge,RFS2,,35,2975.0

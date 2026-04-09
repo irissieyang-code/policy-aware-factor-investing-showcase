@@ -1,0 +1,5 @@
+policy,event_date,mechanism,window_nonzero_days,window_mean_intensity,window_max_intensity
+RFS2,2021-01-04,subsidy,6,0.01963636363636364,0.036000000000000004
+RFS2,2021-01-04,compliance,11,0.8230688265141495,0.97875
+RFS2,2021-01-04,credit_market,11,0.705659321157651,0.87075
+RFS2,2021-01-04,demand_pull,11,0.22618186423153014,0.36450000000000005

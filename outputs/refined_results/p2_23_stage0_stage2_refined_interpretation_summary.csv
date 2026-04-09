@@ -1,0 +1,7 @@
+sample_set,policy,baseline_p,best_single_var,best_single_p,best_joint_var,best_joint_p,single_signal,joint_signal
+main_only,IRA,0.17369547002755614,credit_market_expo_it,0.07593066019825152,credit_market_expo_it,0.0483385646905734,yes,yes
+main_plus_edge,IRA,0.0005671022563622946,demand_pull_expo_it,0.0005299773867078024,demand_pull_expo_it,0.013039503975646361,yes,yes
+main_only,LCFS,0.13635924719810963,credit_market_expo_it,0.03717595908036974,demand_pull_expo_it,1.3048923313098462e-07,yes,yes
+main_plus_edge,LCFS,0.14412474974981362,demand_pull_expo_it,0.12964753352753583,demand_pull_expo_it,0.12542117559614702,no,no
+main_only,RFS2,0.8669083090486505,subsidy_expo_it,,compliance_expo_it,0.07040488053071431,no,yes
+main_plus_edge,RFS2,0.9115586288716784,subsidy_expo_it,,compliance_expo_it,0.021955958069771447,no,yes
